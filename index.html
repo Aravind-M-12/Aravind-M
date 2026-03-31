@@ -382,23 +382,26 @@ font-family:Arial;
 
 
 /* Responsive */
-@media(max-width: 768px) {
+@media (max-width: 768px) {
   .nav-links {
-    display: none;
+    max-height: 0;
+    overflow: hidden;
     flex-direction: column;
     background: #222;
     position: absolute;
     right: 0;
     top: 60px;
     width: 200px;
+    transition: max-height 0.3s ease;
   }
 
   .nav-links.active {
-    display: flex;
+    max-height: 300px; /* enough height to show menu */
   }
 
   .menu-toggle {
     display: block;
+    cursor: pointer;
   }
 }
 
@@ -638,6 +641,14 @@ function placeOrder(){
 function backHome(){
     showPage("productPage");
 }
+
+
+const toggle = document.querySelector(".menu-toggle");
+const nav = document.querySelector(".nav-links");
+
+toggle.addEventListener("click", () => {
+  nav.classList.toggle("active");
+});
 
 </script>
 
